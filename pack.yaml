@@ -1,6 +1,6 @@
 ---
 ref: st2_azure_ad
-name : st2_azure_ad
+name : Azure Active Directory
 description : Azure Active Directory actions
 keywords: 
     - microsoft
