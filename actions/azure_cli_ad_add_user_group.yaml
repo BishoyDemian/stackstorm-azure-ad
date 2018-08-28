@@ -1,0 +1,26 @@
+---
+  name: "azure_cli_ad_create_user"
+  pack: "st2_azure_ad"
+  runner_type: "local-shell-cmd"
+  description: "Add user to group"
+  enabled: true
+  entry_point: ""
+  parameters:
+      group:
+          type: "string"
+          description: "Display name of the group"
+          required: true
+      object_id:
+          type: "string"
+          description: "Object ID of the user"
+          required: true
+      verbose:
+        type: "boolean"
+        description: "True to explain what is being done"
+        default: true
+      cmd:
+          immutable: true
+          default: "az ad group member add --group {{group}} --member-id {{object_id}} {{args}}"
+      args:
+          description: "Command line arguments passed to Azure CLI"
+          default: "{% if verbose == true %}--verbose{% endif %}"

@@ -1,7 +1,7 @@
 ---
   name: "azure_cli_ad_create_user"
   pack: "st2_azure_ad"
-  runner_type: "local-shell-script"
+  runner_type: "local-shell-cmd"
   description: "Create A User in Azure Active Directory"
   enabled: true
   entry_point: ""
