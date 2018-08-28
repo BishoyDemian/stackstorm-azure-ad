@@ -33,6 +33,8 @@ st2_azure_ad.demo1:
         password: <% $.password %>
       publish:
         object_id: <% task("create_user").result.stdout.objectId %>
+      on-success:
+        - add_to_group  
     
     add_to_group:
       # [150, 400]
