@@ -1,5 +1,5 @@
 ---
-  name: "azure_cli_ad_create_user"
+  name: "azure_cli_add_user_group"
   pack: "st2_azure_ad"
   runner_type: "local-shell-cmd"
   description: "Add user to group"
