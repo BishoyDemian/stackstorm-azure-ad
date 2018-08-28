@@ -1,0 +1,30 @@
+---
+  name: "azure_cli_ad_create_user"
+  pack: "st2_azure_ad"
+  runner_type: "local-shell-script"
+  description: "Create A User in Azure Active Directory"
+  enabled: true
+  entry_point: ""
+  parameters:
+      name:
+          type: "string"
+          description: "display name of the user"
+          required: true
+      upn:
+          type: "string"
+          description: "UPN of the user"
+          required: true
+      password:
+          type: "string"
+          description: "Boolean flag for force"
+          required: true
+      verbose:
+        type: "boolean"
+        description: "True to explain what is being done"
+        default: true
+      cmd:
+          immutable: true
+          default: "az ad user create --display-name {{name}} --user-principal-name {{upn}} --password {{password}} {{args}}"
+      args:
+          description: "Command line arguments passed to Azure CLI"
+          default: "{% if verbose == true %}--verbose{% endif %}"

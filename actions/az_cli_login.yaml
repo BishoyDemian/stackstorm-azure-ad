@@ -1,0 +1,32 @@
+---
+  name: "azure_cli_login"
+  runner_type: "local-shell-script"
+  description: "Login to Azure CLI"
+  enabled: true
+  entry_point: ""
+  parameters:
+      client_id:
+          type: "string"
+          description: "Client ID"
+          required: true
+          default: "{{action_context.az_client_id}}"
+      client_secret:
+          type: "string"
+          description: "Client Secret"
+          required: true
+          default: "{{action_context.az_client_secret}}"
+      tenant:
+          type: "string"
+          description: "Tenant"
+          required: true
+          default: "{{action_context.az_tenant}}"
+      verbose:
+        type: "boolean"
+        description: "True to explain what is being done"
+        default: true
+      args:
+          description: "Command line arguments passed to Azure CLI"
+          default: "{% if verbose == true %}--verbose{% endif %}"
+      cmd:
+          immutable: true
+          default: "az login --service-principal --u {{client_id}} --p {{client_secret}} --password {{password}} {{args}}"
