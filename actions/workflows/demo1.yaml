@@ -1,0 +1,42 @@
+---
+version: '2.0'
+
+st2_azure_ad.demo1:
+  input:
+    - upn
+    - name
+    - group
+    - client_id
+    - client_secret
+    - password
+    - tenant
+    - verbose
+    
+  tasks:
+    login:
+      # [150, 100]
+      action: st2_azure_ad.azure_cli_login
+      input:
+        client_id: <% $.client_id %>
+        client_secret: <% $.client_secret %>
+        tenant: <% $.tenant %>
+        verbose: <% $.verbose %>
+      on-success:
+        - create_user
+        
+    create_user:
+      # [150, 250]
+      action: st2_azure_ad.azure_cli_ad_create_user
+      input: 
+        name: <% $.name %>
+        upn: <% $.upn %>
+        password: <% $.password %>
+      publish:
+        object_id: <% task("create_user").result.stdout.objectId %>
+    
+    add_to_group:
+      # [150, 400]
+      action: st2_azure_ad.azure_cli_ad_add_user_group
+      input:
+        group: <% $.group %>
+        object_id: <% $.object_id %>
