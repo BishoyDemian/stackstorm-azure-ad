@@ -30,4 +30,4 @@
           default: "{% if verbose == true %}--verbose{% endif %}"
       cmd:
           immutable: true
-          default: "az login --service-principal --u {{client_id}} --p {{client_secret}} --password {{password}} {{args}}"
+          default: "az login --service-principal --u {{client_id}} --p {{client_secret}} --tenant {{tenant}} {{args}}"
