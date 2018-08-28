@@ -24,10 +24,11 @@
       verbose:
         type: "boolean"
         description: "True to explain what is being done"
-        default: true
+        default: false
+      
       args:
           description: "Command line arguments passed to Azure CLI"
           default: "{% if verbose == true %}--verbose{% endif %}"
       cmd:
           immutable: true
-          default: "az login --service-principal -u {{client_id}} -p {{client_secret}} --tenant {{tenant}} {{args}}"
+          default: "az login --service-principal -u {{client_id}} -p {{client_secret}} --tenant {{tenant}} --allow-no-subscriptions {{args}}"
