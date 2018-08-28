@@ -1,5 +1,6 @@
 ---
   name: "azure_cli_login"
+  pack: "st2_azure_ad"
   runner_type: "local-shell-script"
   description: "Login to Azure CLI"
   enabled: true
