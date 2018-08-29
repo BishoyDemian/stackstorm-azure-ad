@@ -38,7 +38,7 @@ st2_azure_ad.demo1:
     
     add_to_group:
       # [150, 400]
-      action: st2_azure_ad.azure_cli_ad_add_user_group
+      action: st2_azure_ad.azure_cli_add_user_group
       input:
         group: <% $.group %>
         object_id: <% $.object_id %>
